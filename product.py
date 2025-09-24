@@ -6,6 +6,9 @@ class Product():
         self.__price = price #float
         self.__stock_quantity = stock_quantity #int
 
+    def get_product_id(self):
+        return self.__product_id
+
     def update_price(self, new_price):
         self.__price = new_price
 
