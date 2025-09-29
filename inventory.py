@@ -1,14 +1,18 @@
 from product import *
 
 class Inventory():
-    inventory = {}
 
+    def __init__(self, name):
+        self._name = name
+        self._inventory = {}
+
+    # storing product as value to its id as a key
     def add_product(self, product):
-        Inventory.inventory.update({product.get_product_id(): product})
+        self._inventory.update({product.get_product_id(): product})
 
     def remove_product(self, product_id):
-        del Inventory.inventory[product_id]
+        del self._inventory[product_id]
     
     def list_products(self):
-        for product in Inventory.inventory.values():
+        for product in self._inventory.values(): #Iterating over values not keys
             return product.get_product_details()

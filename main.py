@@ -10,7 +10,7 @@ def main():
 
     print(milk.get_product_details())
 
-    inventory = Inventory()
+    inventory = Inventory('Groceries')
     inventory.add_product(eggs)
 
     print(inventory.list_products())
