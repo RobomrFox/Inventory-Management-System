@@ -19,3 +19,6 @@ class Inventory():
             list.append(product.get_product_details())
 
         return list #returns a list
+    
+    def get_product(self, product_id):
+        return self._inventory.get(product_id)

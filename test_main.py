@@ -15,8 +15,23 @@ adding_products_test = [
 ]
 
 
-edge_cases = [] 
+#Edge cases List
+zero_qty_cases = [
+    (1, 0),          
+    (2, 0),
+]
 
+overstock_cases = [
+    (1, 9999),       
+    (3, 1000),
+]
+
+nonexistent_cases = [
+    (12345, 5),      
+    (99999, 1),
+]
+
+#This test does Adding, Selling and Listing Products
 def Test(adding_test): 
     inventory = Inventory('Testing Inventory')
 
@@ -40,7 +55,8 @@ def Test(adding_test):
 
     #List new inventory
     print('Inventory List: ')
-    print(inventory.list_products())
+    print('\n'.join(inventory.list_products())) # instead of a list it joins every item with a new line '\n' and print the next element on the next line :)
+    print('\n')
 
     #selling test
     for pos_sale in selling_list: 
@@ -50,4 +66,61 @@ def Test(adding_test):
         sale = Sale(item, qty).process_sale()
 
     print('After Sales')
-    print(inventory.list_products())
+    print('\n'.join(inventory.list_products()))
+
+    return inventory
+
+
+def Edge_Case_Test(inv, zero_cases, over_cases, nonexistent_cases):
+    print('\n Edge cases start, jst writing this line for space \n')
+
+    #when selling qty is 0
+    for id, qty in zero_cases:
+        print(f'Zero Qunatity Test: product id {id} and qty: {qty}')
+        prod = inv.get_product(id)
+
+        if prod is None:
+            print("Product not found")
+            continue
+
+        original_qty = prod.get_stock_quantity()
+
+        #revenue is 0 for no sale
+        revenue = Sale(prod, qty).process_sale()
+
+        if revenue == 0 and original_qty == prod.get_stock_quantity():
+            print('Test Passed, nothing sold for 0 qty')
+        else: 
+            print('Test failed')
+
+    print('\n')
+
+    #overstock cases
+    for id, qty in over_cases:
+        print(f'Overstock Test: product id {id} and qty: {qty}')
+        prod = inv.get_product(id)
+
+        if prod is None:
+            print("Product not found")
+            continue
+
+        original_qty = prod.get_stock_quantity()
+
+        #revenue is 0 for no sale
+        revenue = Sale(prod, qty).process_sale()
+
+        if revenue == 0 and original_qty == prod.get_stock_quantity():
+            print('Test Passed, no sale for overstock qty')
+        else: 
+            print('Test failed')
+
+    print('\n')
+
+    for id, qty in nonexistent_cases:
+        print(f'Not existence Test: product id {id} and qty: {qty}')
+        prod = inv.get_product(id)
+
+        if prod is None:
+            print(f'Test Passed! Product {id} not found.')
+        else:
+            print('Test Failed: product exists')

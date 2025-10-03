@@ -19,15 +19,22 @@ class Product():
         return True if self._stock_quantity > quantity else False
     
     def sell(self, quantity):
-        if quantity > self._stock_quantity:
+        
+        if quantity <= 0:
+            raise Exception('Sale Canceled: quantity must be positive')
+        elif quantity > self._stock_quantity:
             raise Exception(f"{quantity} is a lot!, we only have {self._stock_quantity}")
         elif quantity <= self._stock_quantity:
             self._stock_quantity -= quantity
 
         return quantity * self._price
     
+    #Added these two methods to complete the Test Cases
     def get_product_details(self):
         return f"{self._name}, Price: {self._price}, Quantity: {self._stock_quantity}"
+    
+    def get_stock_quantity(self):
+        return self._stock_quantity
     
 
 #Eelctronic Products
