@@ -14,5 +14,8 @@ class Inventory():
         del self._inventory[product_id]
     
     def list_products(self):
+        list = []
         for product in self._inventory.values(): #Iterating over values not keys
-            return product.get_product_details()
+            list.append(product.get_product_details())
+
+        return list #returns a list
