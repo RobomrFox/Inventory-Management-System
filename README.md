@@ -1,6 +1,8 @@
 # Assignment: Inventory Management System 
 ### Python Fall Sem
 
+Practicing OOP principles building terminal Inventory Management System for grocery store. 
+
 ## How to Run This application
 1. git clone this repository (or extract the zip file). I use uv
 2. python -m venv .venv
