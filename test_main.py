@@ -33,6 +33,8 @@ nonexistent_cases = [
 
 #This test does Adding, Selling and Listing Products
 def Test(adding_test): 
+    print("\033[93m Starting Tests: \n\033[0m") #Yellow color print statement
+
     inventory = Inventory('Testing Inventory')
 
     selling_list = []
@@ -72,7 +74,7 @@ def Test(adding_test):
 
 
 def Edge_Case_Test(inv, zero_cases, over_cases, nonexistent_cases):
-    print('\n Edge cases start, jst writing this line for space \n')
+    print('\033[93m\n Edge cases start, jst writing this line for space: \n\033[0m')
 
     #when selling qty is 0
     for id, qty in zero_cases:
