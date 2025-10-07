@@ -11,4 +11,3 @@ Practicing OOP principles building terminal Inventory Management System for groc
 5. python main.py
 
 ![alt text](image.png)
-![alt text](image-1.png)
