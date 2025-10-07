@@ -9,3 +9,6 @@ Practicing OOP principles building terminal Inventory Management System for groc
 3. source .venv/bin/activate  (Mac/Linux) or .venv\Scripts\activate (Windows)
 4. pip install -r requirements.txt (there are no dependencies but for future)
 5. python main.py
+
+![alt text](image.png)
+![alt text](image-1.png)
